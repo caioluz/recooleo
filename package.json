@@ -1,0 +1,20 @@
+{
+  "name": "recooleo",
+  "version": "1.0.0",
+  "description": "Progressive Web App (pwa) desenvolvida para a disciplina de Aplicações para Sustentabilidade no 1° semestre de 2023.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caioluz/recooleo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caioluz/recooleo/issues"
+  },
+  "homepage": "https://github.com/caioluz/recooleo#readme"
+}
