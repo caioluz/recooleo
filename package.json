@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/caioluz/recooleo/issues"
   },
-  "homepage": "https://github.com/caioluz/recooleo#readme"
+  "homepage": "https://github.com/caioluz/recooleo#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.3.2"
+  }
 }
