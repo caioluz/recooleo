@@ -17,6 +17,12 @@
       "email": "caio.luz@gmail.com",
       "senha": "Testando123",
       "id": 3
+    },
+    {
+      "nome": "Amanda Lima",
+      "email": "aglima.amanda@gmail.com",
+      "senha": "Teste",
+      "id": 4
     }
   ]
 }

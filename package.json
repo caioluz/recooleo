@@ -2,10 +2,11 @@
   "name": "recooleo",
   "version": "1.0.0",
   "description": "Progressive Web App (pwa) desenvolvida para a disciplina de Aplicações para Sustentabilidade no 1° semestre de 2023.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "build": "npx tailwindcss -i ./src/css/input.css -o ./public/dist/output.css",
+    "watch": "npx tailwindcss -i ./src/css/input.css -o ./public/dist/output.css --watch",
     "server": "json-server --watch db.json"
   },
   "repository": {
@@ -19,6 +20,11 @@
     "url": "https://github.com/caioluz/recooleo/issues"
   },
   "homepage": "https://github.com/caioluz/recooleo#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "json-server": "^0.17.3"
+  },
   "devDependencies": {
     "tailwindcss": "^3.3.2"
   }
