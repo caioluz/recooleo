@@ -23,6 +23,9 @@ app.get('/about', function(req, res) {
 app.get('/cadastro', function(req, res) {
     res.render('pages/register');
 });
+app.get('/deposit', function(req, res) {
+    res.render('pages/deposit');
+});
 app.post('/cadastro', urlencodedParser, function(req, res,){
     let {nome, email, password} = req.body;
     let usuario = new User(nome, email, password);
