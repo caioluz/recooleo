@@ -4,7 +4,9 @@
   "description": "Progressive Web App (pwa) desenvolvida para a disciplina de Aplicações para Sustentabilidade no 1° semestre de 2023.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "server": "json-server --watch db.json"
   },
   "repository": {
     "type": "git",

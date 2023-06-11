@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "nome": "Mary Ines",
+      "email": "mary.ines@gmail.com",
+      "senha": "teste123"
+    },
+    {
+      "id": 2,
+      "nome": "Matheus Dutra",
+      "email": "teco.dutra@gmail.com",
+      "senha": "teste123"
+    },
+    {
+      "nome": "Caio Luz",
+      "email": "caio.luz@gmail.com",
+      "senha": "Testando123",
+      "id": 3
+    }
+  ]
+}
