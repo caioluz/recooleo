@@ -23,6 +23,12 @@
       "email": "aglima.amanda@gmail.com",
       "senha": "Teste",
       "id": 4
+    },
+    {
+      "nome": "Eduardo Henrique Kenayo Luz",
+      "email": "dudu.diniz@gmail.com",
+      "senha": "duba24",
+      "id": 5
     }
   ]
 }

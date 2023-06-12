@@ -23,7 +23,9 @@
   "dependencies": {
     "ejs": "^3.1.5",
     "express": "^4.17.1",
-    "json-server": "^0.17.3"
+    "express-session": "^1.17.3",
+    "json-server": "^0.17.3",
+    "node-fetch": "^2.6.11"
   },
   "devDependencies": {
     "tailwindcss": "^3.3.2"
