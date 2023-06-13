@@ -3,30 +3,25 @@
 <head>
     <%- include('../partials/head'); %>
 </head>
-<div class="cabecalho"></div>
-<div class="container bg-gray-700"></body>
+<body class="container">
 
-<main>
-<div class="row">
-    <div class="col-sm-8">
-        <div class="jumbotron">
-            <h1>This is great</h1>
-            <p>Welcome to templating using EJS</p>
-        </div>
+  <header>
+    <%-
+      include('../partials/header', {
+        titulo: 'Cadastro de Óleo',
+        anterior: '/'
+      });
+    %>
+  </header>
+
+  <main>
+    <div>
+      <img src="/images/info_oleo.jpeg" alt="">
     </div>
-
-    <div class="col-sm-4">
-        <div class="well">
-            <h3>Look I'm A Sidebar!</h3>
-        </div>
+    <div class="p-6 text-gray-600">
+     
     </div>
-
-</div>
-</main>
-
-<footer>
-    <%- include('../partials/footer'); %>
-</footer>
+  </main>
 
 </body>
 </html>
