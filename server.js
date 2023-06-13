@@ -27,11 +27,10 @@ app.set("view engine", "ejs");
 app.get("/", function (req, res) {
   if (req.session.user) {
     res.redirect("home");
-  } else {
-    res.render("pages/index");
   }
-});
 
+  res.render("pages/login");
+});
 app.post("/", urlencodedParser, async function (req, res) {
   let { email, password } = req.body;
 
@@ -40,13 +39,45 @@ app.post("/", urlencodedParser, async function (req, res) {
   if (user && user[0].senha === password) {
     req.session.user = user[0];
     res.redirect("home");
-  } else {
-    res.render("pages/index");
   }
+  
+  res.render("pages/login");
 });
-
 app.get("/home", function (req, res) {
-  res.render("pages/home");
+  if (!req.session.user) {
+    res.redirect("/");
+  }
+
+  res.render("pages/index", {user: req.session.user});
+});
+app.get("/espacos", function (req, res) {
+  if (!req.session.user) {
+    res.redirect("/");
+  }
+
+  res.render("pages/buildings", {user: req.session.user});
+});
+app.get("/info", function (req, res) {
+  if (!req.session.user) {
+    res.redirect("/");
+  }
+
+  res.render("pages/info", {user: req.session.user});
+});
+app.get("/configuracoes", function (req, res) {
+  if (!req.session.user) {
+    res.redirect("/");
+  }
+
+  res.render("pages/settings", {user: req.session.user});
+});
+app.get("/sair", urlencodedParser, function (req, res) {
+  if (!req.session.user) {
+    res.redirect("/");
+  }
+
+  req.session.destroy();
+  res.redirect("/");
 });
 app.get("/cadastro", function (req, res) {
   res.render("pages/register");
@@ -55,11 +86,13 @@ app.post("/cadastro", urlencodedParser, function (req, res) {
   let { nome, email, password } = req.body;
   let usuario = new User(nome, email, password);
   usuario.add(req.body);
-  res.render("pages/index");
+  res.redirect("/");
 });
+
 
 // load public folder
 app.use(express.static(__dirname + "/public"));
 
-app.listen(5001);
-console.log("8080 is the magic port");
+app.listen(8080, () => {
+    console.log('Servidor iniciado em http://localhost:8080');
+});

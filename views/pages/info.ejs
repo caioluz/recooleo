@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+  <header>
+    <%-
+      include('../partials/header', {
+        titulo: 'Informações',
+        anterior: '/'
+      });
+    %>
+  </header>
+
+  <main>
+    <div>
+      <img src="/images/info_oleo.jpeg" alt="">
+    </div>
+    <div class="p-6 text-gray-600">
+      <p>A reciclagem do óleo é um processo importante para o meio ambiente, pois evita a contaminação de solos, rios e mares, além de reduzir a demanda por matérias-primas virgens e economizar energia. Aqui estão algumas das principais informações sobre a reciclagem do óleo:</p>
+      <ol class="list-decimal list-inside pt-6">
+        <li class="pb-4">Tipos de óleo reciclável: O processo de reciclagem de óleo se aplica principalmente a óleos usados de origem vegetal e animal, como óleo de cozinha, óleo de fritura, óleo de motor, óleo de transformadores, entre outros.</li>
+        <li class="pb-4">Coleta: A primeira etapa da reciclagem de óleo envolve a coleta adequada do óleo usado. É essencial que o óleo não seja descartado no ralo, na terra ou no lixo comum, pois isso pode causar danos ao meio ambiente.</li>
+        <li class="pb-4">Processo de reciclagem: O óleo usado coletado passa por um processo de reciclagem que envolve várias etapas. Primeiro, o óleo é filtrado para remover impurezas, como resíduos de alimentos ou partículas sólidas. Em seguida, ocorre o processo de refino, no qual são removidos contaminantes químicos, como água e ácidos. Dependendo do tipo de óleo, ele pode ser destilado para separar seus componentes, como ácidos graxos e glicerol.</li>
+        <li class="pb-4">Produtos resultantes: O óleo reciclado pode ser transformado em diferentes produtos, como a produção de biodiesel, fabricação de sabão, detergentes, lubrificantes, tintas e outros produtos químicos.</li>
+        <li class="pb-4">Benefícios ambientais: A reciclagem do óleo oferece diversos benefícios ambientais: reduz a contaminação do solo, da água e do ar, evitando que substâncias tóxicas sejam liberadas no meio ambiente. Além disso, ajuda a conservar os recursos naturais, pois reduz a necessidade de extração de novas matérias-primas.</li>
+      </ol>
+    </div>
+  </main>
+
+</body>
+</html>
