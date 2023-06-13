@@ -1,3 +1,5 @@
+const fetch = require("node-fetch");
+
 // Classe Usuário
 module.exports = class User {
   constructor(nome, email, senha) {
@@ -7,10 +9,10 @@ module.exports = class User {
   }
 
   async add() {
-    const objUser = { 
-      ...this
+    const objUser = {
+      ...this,
     };
-  
+
     const response = await fetch("http://localhost:3000/users", {
       method: "POST",
       headers: {
@@ -37,4 +39,12 @@ module.exports = class User {
     const data = await res.json();
     console.log("Usuário editado: " + data);
   }
-}
+
+  static async fecthUser(email) {
+    const res = await fetch(`http://localhost:3000/users?email=${email}`);
+
+    const data = await res.json();
+
+    return data;
+  }
+};

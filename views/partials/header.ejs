@@ -1,11 +1,15 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/">Home</a>
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item">
-      <a class="nav-link" href="/">Início</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/settings">Configuração</a>
-    </li>
-  </ul>
+<nav class="justify-between p-4 flex bg-gray-700">
+  <div class="items-center">
+    <% if(locals.anterior) { %>
+    <a class="flex text-white" href="<%= anterior %>">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-6">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+      </svg>
+    </a>
+    <% } %>
+  </div>
+  <div class="text-white items-center uppercase">
+    <%= titulo %>
+  </div>
+  <div></div>
 </nav>
