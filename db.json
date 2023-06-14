@@ -29,6 +29,22 @@
       "email": "dudu.diniz@gmail.com",
       "senha": "duba24",
       "id": 5
+    },
+    {
+      "nome": "Caio Luz",
+      "email": "caio@gmail.com",
+      "senha": "Caco123",
+      "id": 6
+    }
+  ],
+  "espacos": [
+    {
+      "nomeespaco": "Edificio Novo Mirante",
+      "tipoespacos": "Predio",
+      "localizacao": "Alameda dos Sabiás",
+      "proprietario": "Mateus",
+      "membros": "Amanda",
+      "id": 1
     }
   ]
 }

@@ -2,6 +2,7 @@ var express = require("express");
 var session = require("express-session");
 var bodyParser = require("body-parser");
 var User = require("./src/classes/user.js");
+var Espaco = require("./src/classes/espaço.js");
 
 var app = express();
 
@@ -57,6 +58,30 @@ app.get("/espacos", function (req, res) {
 
   res.render("pages/buildings", { user: req.session.user });
 });
+
+app.get("/cadastraespaco", function (req, res) {
+  if (!req.session.user) {
+    res.redirect("/");
+  }
+
+  res.render("pages/spaceregister");
+});
+
+app.post("/cadastraespaco", urlencodedParser, function (req, res) {
+  const { nomeespaco, tipoespacos, localizacao, proprietario, membros } =
+    req.body;
+  let espaco = new Espaco(
+    nomeespaco,
+    tipoespacos,
+    localizacao,
+    proprietario,
+    membros
+  );
+
+  espaco.addEspaco(espaco);
+  res.redirect("/espacos");
+});
+
 app.get("/info", function (req, res) {
   if (!req.session.user) {
     res.redirect("/");
