@@ -40,7 +40,7 @@ app.post("/", urlencodedParser, async function (req, res) {
     req.session.user = user[0];
     res.redirect("home");
   }
-  
+
   res.render("pages/login");
 });
 app.get("/home", function (req, res) {
@@ -48,28 +48,28 @@ app.get("/home", function (req, res) {
     res.redirect("/");
   }
 
-  res.render("pages/index", {user: req.session.user});
+  res.render("pages/index", { user: req.session.user });
 });
 app.get("/espacos", function (req, res) {
   if (!req.session.user) {
     res.redirect("/");
   }
 
-  res.render("pages/buildings", {user: req.session.user});
+  res.render("pages/buildings", { user: req.session.user });
 });
 app.get("/info", function (req, res) {
   if (!req.session.user) {
     res.redirect("/");
   }
 
-  res.render("pages/info", {user: req.session.user});
+  res.render("pages/info", { user: req.session.user });
 });
 app.get("/configuracoes", function (req, res) {
   if (!req.session.user) {
     res.redirect("/");
   }
 
-  res.render("pages/settings", {user: req.session.user});
+  res.render("pages/settings", { user: req.session.user });
 });
 app.get("/sair", urlencodedParser, function (req, res) {
   if (!req.session.user) {
@@ -89,10 +89,16 @@ app.post("/cadastro", urlencodedParser, function (req, res) {
   res.redirect("/");
 });
 
+app.get("/spaceManager", function (req, res) {
+  res.render("pages/spaceManager");
+});
 
+app.get("/spaceUser", function (req, res) {
+  res.render("pages/spaceUser");
+});
 // load public folder
 app.use(express.static(__dirname + "/public"));
 
 app.listen(8080, () => {
-    console.log('Servidor iniciado em http://localhost:8080');
+  console.log("Servidor iniciado em http://localhost:8080");
 });
