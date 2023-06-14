@@ -21,55 +21,72 @@ var jsonParser = bodyParser.json();
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
+// middleware de verificação de autenticação
+const requireAuth = (req, res, next) => {
+  if (req.session && req.session.user) {
+    next();
+  } else {
+    res.redirect('/login');
+  }
+};
+const requireNotAuth = (req, res, next) => {
+  if (!req.session || !req.session.user) {
+    next();
+  } else {
+    res.redirect('/');
+  }
+};
+
 // set the view engine to ejs
 app.set("view engine", "ejs");
 
 // load up an ejs view file
-app.get("/", function (req, res) {
-  if (req.session.user) {
-    res.redirect("home");
-  }
+app.get("/", requireAuth, function (req, res) {
+  res.render("pages/index", { user: req.session.user });
+});
+app.get("/register", requireNotAuth, function (req, res) {
+  res.render("pages/register");
+});
+app.post("/register", urlencodedParser, function (req, res) {
+  let { nome, email, password } = req.body;
+  let usuario = new User(nome, email, password);
 
+  usuario.add(req.body);
+  res.redirect("/");
+});
+app.get("/login", requireNotAuth, function (req, res) {
   res.render("pages/login");
 });
-app.post("/", urlencodedParser, async function (req, res) {
+app.post("/login", urlencodedParser, async function (req, res) {
   let { email, password } = req.body;
-
   const user = await User.fecthUser(email);
 
   if (user && user[0].senha === password) {
     req.session.user = user[0];
-    res.redirect("home");
-  }
-
-  res.render("pages/login");
-});
-app.get("/home", function (req, res) {
-  if (!req.session.user) {
     res.redirect("/");
   }
-
-  res.render("pages/index", { user: req.session.user });
-});
-app.get("/espacos", function (req, res) {
-  if (!req.session.user) {
-    res.redirect("/");
+  else {
+    res.redirect("/login");
   }
-
-  res.render("pages/buildings", { user: req.session.user });
 });
-
-app.get("/cadastraespaco", function (req, res) {
-  if (!req.session.user) {
-    res.redirect("/");
-  }
-
-  res.render("pages/spaceregister");
+app.get("/logout", requireAuth, function (req, res) {
+  req.session.destroy();
+  res.redirect("/");
 });
-
-app.post("/cadastraespaco", urlencodedParser, function (req, res) {
-  const { nomeespaco, tipoespacos, localizacao, proprietario, membros } =
-    req.body;
+app.get("/settings", requireAuth, function (req, res) {
+  res.render("pages/settings", { user: req.session.user });
+});
+app.get("/info", requireAuth, function (req, res) {
+  res.render("pages/info");
+});
+app.get("/spaces", requireAuth, function (req, res) {
+  res.render("pages/spaces", { user: req.session.user });
+});
+app.get("/space-register", requireAuth, function (req, res) {
+  res.render("pages/spaceRegister");
+});
+app.post("/space-register", urlencodedParser, function (req, res) {
+  const { nomeespaco, tipoespacos, localizacao, proprietario, membros } = req.body;
   let espaco = new Espaco(
     nomeespaco,
     tipoespacos,
@@ -79,48 +96,12 @@ app.post("/cadastraespaco", urlencodedParser, function (req, res) {
   );
 
   espaco.addEspaco(espaco);
-  res.redirect("/espacos");
+  res.redirect("/spaces");
 });
-
-app.get("/info", function (req, res) {
-  if (!req.session.user) {
-    res.redirect("/");
-  }
-
-  res.render("pages/info", { user: req.session.user });
-});
-app.get("/configuracoes", function (req, res) {
-  if (!req.session.user) {
-    res.redirect("/");
-  }
-
-  res.render("pages/settings", { user: req.session.user });
-});
-app.get("/sair", urlencodedParser, function (req, res) {
-  if (!req.session.user) {
-    res.redirect("/");
-  }
-
-  req.session.destroy();
-  res.redirect("/");
-});
-app.get("/cadastro", function (req, res) {
-  res.render("pages/register");
-});
-app.post("/cadastro", urlencodedParser, function (req, res) {
-  let { nome, email, password } = req.body;
-  let usuario = new User(nome, email, password);
-  usuario.add(req.body);
-  res.redirect("/");
-});
-
-app.get("/spaceManager", function (req, res) {
+app.get("/space-manager", requireAuth, function (req, res) {
   res.render("pages/spaceManager");
 });
 
-app.get("/spaceUser", function (req, res) {
-  res.render("pages/spaceUser");
-});
 // load public folder
 app.use(express.static(__dirname + "/public"));
 
