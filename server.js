@@ -114,6 +114,13 @@ app.post("/cadastro", urlencodedParser, function (req, res) {
   res.redirect("/");
 });
 
+app.get("/spaceManager", function (req, res) {
+  res.render("pages/spaceManager");
+});
+
+app.get("/spaceUser", function (req, res) {
+  res.render("pages/spaceUser");
+});
 // load public folder
 app.use(express.static(__dirname + "/public"));
 
