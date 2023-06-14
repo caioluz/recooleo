@@ -2,6 +2,7 @@ var express = require("express");
 var session = require("express-session");
 var bodyParser = require("body-parser");
 var User = require("./src/classes/user.js");
+var Espaco = require("./src/classes/espaço.js");
 
 var app = express();
 
@@ -40,7 +41,7 @@ app.post("/", urlencodedParser, async function (req, res) {
     req.session.user = user[0];
     res.redirect("home");
   }
-  
+
   res.render("pages/login");
 });
 app.get("/home", function (req, res) {
@@ -48,28 +49,52 @@ app.get("/home", function (req, res) {
     res.redirect("/");
   }
 
-  res.render("pages/index", {user: req.session.user});
+  res.render("pages/index", { user: req.session.user });
 });
 app.get("/espacos", function (req, res) {
   if (!req.session.user) {
     res.redirect("/");
   }
 
-  res.render("pages/buildings", {user: req.session.user});
+  res.render("pages/buildings", { user: req.session.user });
 });
+
+app.get("/cadastraespaco", function (req, res) {
+  if (!req.session.user) {
+    res.redirect("/");
+  }
+
+  res.render("pages/spaceregister");
+});
+
+app.post("/cadastraespaco", urlencodedParser, function (req, res) {
+  const { nomeespaco, tipoespacos, localizacao, proprietario, membros } =
+    req.body;
+  let espaco = new Espaco(
+    nomeespaco,
+    tipoespacos,
+    localizacao,
+    proprietario,
+    membros
+  );
+
+  espaco.addEspaco(espaco);
+  res.redirect("/espacos");
+});
+
 app.get("/info", function (req, res) {
   if (!req.session.user) {
     res.redirect("/");
   }
 
-  res.render("pages/info", {user: req.session.user});
+  res.render("pages/info", { user: req.session.user });
 });
 app.get("/configuracoes", function (req, res) {
   if (!req.session.user) {
     res.redirect("/");
   }
 
-  res.render("pages/settings", {user: req.session.user});
+  res.render("pages/settings", { user: req.session.user });
 });
 app.get("/sair", urlencodedParser, function (req, res) {
   if (!req.session.user) {
@@ -89,10 +114,9 @@ app.post("/cadastro", urlencodedParser, function (req, res) {
   res.redirect("/");
 });
 
-
 // load public folder
 app.use(express.static(__dirname + "/public"));
 
 app.listen(8080, () => {
-    console.log('Servidor iniciado em http://localhost:8080');
+  console.log("Servidor iniciado em http://localhost:8080");
 });
