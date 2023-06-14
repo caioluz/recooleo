@@ -71,13 +71,13 @@ app.get("/configuracoes", function (req, res) {
 
   res.render("pages/settings", {user: req.session.user});
 });
-app.get("/deposit", function (req, res) {
-    if (!req.session.user) {
-      res.redirect("/");
-    }
-  
-    res.render("pages/deposit", {user: req.session.user});
-  });
+app.get("/deposito", function (req, res) {
+  if (!req.session.user) {
+    res.redirect("/");
+  }
+
+  res.render("pages/deposit", {user: req.session.user});
+});
 app.get("/sair", urlencodedParser, function (req, res) {
   if (!req.session.user) {
     res.redirect("/");
