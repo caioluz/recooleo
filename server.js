@@ -96,6 +96,9 @@ app.get("/spaceManager", function (req, res) {
 app.get("/spaceUser", function (req, res) {
   res.render("pages/spaceUser");
 });
+app.get("/spaceEdit", function (req, res) {
+  res.render("pages/spaceEdit");
+});
 // load public folder
 app.use(express.static(__dirname + "/public"));
 
