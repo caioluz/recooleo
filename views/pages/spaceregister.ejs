@@ -5,12 +5,8 @@
   </head>
   <body class="container">
     <header>
-      <%- 
-        include('../partials/header', { 
-          titulo: 'Cadastro de Espaço',
-          anterior: '/espacos'
-        }); 
-      %>
+      <%- include('../partials/header', { titulo: 'Cadastro de Espaço',
+      anterior: '/spaces' }); %>
     </header>
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm m-4">
       <form id="form-cadastro-espaco" method="POST" class="space-y-6">
@@ -125,42 +121,6 @@
             />
           </div>
         </div>
-        <div>
-          <div class="flex items-center justify-between">
-            <label
-              for="proprietario"
-              class="block text-sm font-medium leading-6 text-black"
-              >Proprietário do espaço</label
-            >
-          </div>
-          <div class="mt-2">
-            <input
-              id="proprietario"
-              name="proprietario"
-              type="text"
-              required
-              class="block w-full rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-lime-600 sm:text-sm sm:leading-6"
-            />
-          </div>
-        </div>
-        <div>
-          <div class="flex items-center justify-between">
-            <label
-              for="membros"
-              class="block text-sm font-medium leading-6 text-black"
-              >Membros</label
-            >
-          </div>
-          <div class="mt-2">
-            <input
-              id="membros"
-              name="membros"
-              type="text"
-              class="block w-full rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-lime-600 sm:text-sm sm:leading-6"
-            />
-          </div>
-        </div>
-
         <div class="flex justify-center">
           <button
             type="submit"

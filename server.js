@@ -26,14 +26,14 @@ const requireAuth = (req, res, next) => {
   if (req.session && req.session.user) {
     next();
   } else {
-    res.redirect('/login');
+    res.redirect("/login");
   }
 };
 const requireNotAuth = (req, res, next) => {
   if (!req.session || !req.session.user) {
     next();
   } else {
-    res.redirect('/');
+    res.redirect("/");
   }
 };
 
@@ -64,8 +64,7 @@ app.post("/login", urlencodedParser, async function (req, res) {
   if (user && user[0].senha === password) {
     req.session.user = user[0];
     res.redirect("/");
-  }
-  else {
+  } else {
     res.redirect("/login");
   }
 });
@@ -86,20 +85,27 @@ app.get("/space-register", requireAuth, function (req, res) {
   res.render("pages/spaceRegister");
 });
 app.post("/space-register", urlencodedParser, function (req, res) {
-  const { nomeespaco, tipoespacos, localizacao, proprietario, membros } = req.body;
-  let espaco = new Espaco(
-    nomeespaco,
-    tipoespacos,
-    localizacao,
-    proprietario,
-    membros
-  );
+  const { nomeespaco, tipoespacos, localizacao } = req.body;
+  const proprietario = req.session.user.id;
+  let espaco = new Espaco(nomeespaco, tipoespacos, localizacao, proprietario);
 
   espaco.addEspaco(espaco);
   res.redirect("/spaces");
 });
 app.get("/space-manager", requireAuth, function (req, res) {
   res.render("pages/spaceManager");
+});
+
+app.get("/participate", requireAuth, async function (req, res) {
+  const espacosExistentes = await Espaco.fecthEspacos();
+  res.render("pages/participate", {
+    user: req.session.user,
+    espacosExistentes: espacosExistentes,
+  });
+});
+
+app.post("/participate", urlencodedParser, function (req, res) {
+  console.log(req.body);
 });
 
 // load public folder

@@ -1,40 +1,63 @@
 {
   "users": [
     {
-      "id": 1,
       "nome": "Mary Ines",
       "email": "mary.ines@gmail.com",
-      "senha": "teste123"
+      "senha": "teste123",
+      "espacos": [
+        {
+          "id": 1,
+          "nomeespaco": "Edificio Novo Mirante"
+        }
+      ],
+      "id": 1
     },
     {
-      "id": 2,
       "nome": "Matheus Dutra",
       "email": "teco.dutra@gmail.com",
-      "senha": "teste123"
-    },
-    {
-      "nome": "Caio Luz",
-      "email": "caio.luz@gmail.com",
-      "senha": "Testando123",
-      "id": 3
+      "senha": "teste123",
+      "espacos": [
+        {
+          "id": 1,
+          "nomeespaco": "Edificio Novo Mirante"
+        }
+      ],
+      "id": 2
     },
     {
       "nome": "Amanda Lima",
       "email": "aglima.amanda@gmail.com",
       "senha": "Teste",
-      "id": 4
+      "espacos": [
+        {
+          "id": 1,
+          "nomeespaco": "Edificio Novo Mirante"
+        }
+      ],
+      "id": 3
     },
     {
       "nome": "Eduardo Henrique Kenayo Luz",
       "email": "dudu.diniz@gmail.com",
       "senha": "duba24",
-      "id": 5
+      "espacos": [],
+      "id": 4
     },
     {
       "nome": "Caio Luz",
       "email": "caio@gmail.com",
       "senha": "Caco123",
-      "id": 6
+      "espacos": [
+        {
+          "id": 1,
+          "nomeespaco": "Edificio Novo Mirante"
+        },
+        {
+          "id": 2,
+          "nomeespaco": "Edificio Água Branca"
+        }
+      ],
+      "id": 5
     }
   ],
   "espacos": [
@@ -42,9 +65,79 @@
       "nomeespaco": "Edificio Novo Mirante",
       "tipoespacos": "Predio",
       "localizacao": "Alameda dos Sabiás",
-      "proprietario": "Mateus",
-      "membros": "Amanda",
+      "proprietario": 2,
+      "membros": [
+        {
+          "id": 1,
+          "Nome": "Mary Ines"
+        },
+        {
+          "id": 2,
+          "Nome": "Matheus Dutra"
+        },
+        {
+          "id": 4,
+          "Nome": "Amanda Lima"
+        },
+        {
+          "id": 5,
+          "Nome": "Caio Luz"
+        }
+      ],
+      "coletor": {
+        "litrosTotal": 30,
+        "litrosAtual": 0
+      },
+      "solicitacoes": [
+        {
+          "id": 1,
+          "Nome": "Mary Ines"
+        },
+        {
+          "id": 5,
+          "Nome": "Caio Luz"
+        }
+      ],
       "id": 1
+    },
+    {
+      "nomeespaco": "Edificio Conupos Corporate",
+      "tipoespacos": "Predio",
+      "localizacao": "Alameda dos Sabiás",
+      "proprietario": 5,
+      "membros": [
+        {
+          "id": 1,
+          "Nome": "Mary Ines"
+        },
+        {
+          "id": 2,
+          "Nome": "Matheus Dutra"
+        },
+        {
+          "id": 4,
+          "Nome": "Amanda Lima"
+        }
+      ],
+      "coletor": {
+        "litrosTotal": 30,
+        "litrosAtual": 0
+      },
+      "solicitacoes": [],
+      "id": 2
+    },
+    {
+      "nomeespaco": "Edificio Água Branca",
+      "tipoespacos": "Predio",
+      "localizacao": "Rua da Lareira",
+      "proprietario": 3,
+      "membros": [5],
+      "coletor": {
+        "litrosTotal": 30,
+        "litrosAtual": 0
+      },
+      "solicitacoes": [],
+      "id": 3
     }
   ]
 }
