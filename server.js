@@ -101,6 +101,23 @@ app.post("/space-register", urlencodedParser, function (req, res) {
 app.get("/space-manager", requireAuth, function (req, res) {
   res.render("pages/spaceManager");
 });
+app.get("/space-remove", requireAuth, function (req, res) {
+  res.render("pages/spaceRemove");
+});
+app.get("/oil", requireAuth, function (req, res) {
+  res.render("pages/oil", { user: req.session.user });
+});
+app.get("/oil-container", requireAuth, function (req, res) {
+  res.render("pages/oilContainer", { 
+    user: req.session.user,
+    space: {
+      nome: 'Ed. Mirante',
+      oil_current: 20,
+      oil_max: 30,
+      oil_percent: 80
+    }
+  });
+});
 
 // load public folder
 app.use(express.static(__dirname + "/public"));
