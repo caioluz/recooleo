@@ -2028,11 +2028,6 @@ input:checked + .toggle-bg {
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-green-500:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(14 159 110 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-green-800:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(3 84 63 / var(--tw-bg-opacity));
@@ -2153,6 +2148,11 @@ input:checked + .toggle-bg {
 .focus\:ring-indigo-600:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(88 80 236 / var(--tw-ring-opacity));
+}
+
+.focus\:ring-lime-300:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(190 242 100 / var(--tw-ring-opacity));
 }
 
 .focus\:ring-lime-400:focus {

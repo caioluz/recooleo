@@ -2,7 +2,8 @@ var express = require("express");
 var session = require("express-session");
 var bodyParser = require("body-parser");
 var User = require("./src/classes/user.js");
-var Espaco = require("./src/classes/espaço.js");
+var Space = require("./src/classes/space.js");
+var SpaceUser = require("./src/classes/spaceUser.js");
 
 var app = express();
 
@@ -48,20 +49,20 @@ app.get("/register", requireNotAuth, function (req, res) {
   res.render("pages/register");
 });
 app.post("/register", urlencodedParser, function (req, res) {
-  let { nome, email, password } = req.body;
-  let usuario = new User(nome, email, password);
+  let { name, email, password } = req.body;
+  let user = new User(name, email, password);
 
-  usuario.add(req.body);
+  user.add(req.body);
   res.redirect("/");
 });
 app.get("/login", requireNotAuth, function (req, res) {
   res.render("pages/login");
 });
 app.post("/login", urlencodedParser, async function (req, res) {
-  let { email, password } = req.body;
-  const user = await User.fecthUser(email);
+  let {email, password} = req.body;
+  const user = await User.fecth(email);
 
-  if (user && user[0].senha === password) {
+  if (user && user[0].password === password) {
     req.session.user = user[0];
     res.redirect("/");
   } else {
@@ -78,18 +79,23 @@ app.get("/settings", requireAuth, function (req, res) {
 app.get("/info", requireAuth, function (req, res) {
   res.render("pages/info");
 });
-app.get("/spaces", requireAuth, function (req, res) {
-  res.render("pages/spaces", { user: req.session.user });
+app.get("/spaces", requireAuth, async function (req, res) {
+  const spaces = await SpaceUser.getSpaceByUser(req.session.user.id);
+
+  res.render("pages/spaces", { 
+    user: req.session.user,
+    spaces: spaces
+  });
 });
 app.get("/space-register", requireAuth, function (req, res) {
   res.render("pages/spaceRegister");
 });
 app.post("/space-register", urlencodedParser, function (req, res) {
-  const { nomeespaco, tipoespacos, localizacao } = req.body;
-  const proprietario = req.session.user.id;
-  let espaco = new Espaco(nomeespaco, tipoespacos, localizacao, proprietario);
+  const { name, type, street } = req.body;
+  const owner = req.session.user.id;
+  let space = new Space(name, type, street, owner);
 
-  espaco.addEspaco(espaco);
+  space.add();
   res.redirect("/spaces");
 });
 app.get("/space-manager", requireAuth, function (req, res) {
@@ -102,7 +108,7 @@ app.get("/space-edit", requireAuth, function (req, res) {
   res.render("pages/spaceEdit");
 });
 app.get("/space-users", requireAuth, function (req, res) {
-  res.render("pages/managerUsers");
+  res.render("pages/spaceUser");
 });
 app.get("/oil", requireAuth, function (req, res) {
   res.render("pages/oil", { user: req.session.user });
@@ -118,17 +124,16 @@ app.get("/oil-container", requireAuth, function (req, res) {
     },
   });
 });
-
 app.get("/participate", requireAuth, async function (req, res) {
-  const espacosExistentes = await Espaco.fecthEspacos();
+  const spaces = await Space.fecth();
   res.render("pages/participate", {
     user: req.session.user,
-    espacosExistentes: espacosExistentes,
+    spaces: spaces,
   });
 });
-
 app.post("/participate", urlencodedParser, function (req, res) {
-  console.log(req.body);
+  const { space } = req.body;
+
 });
 
 // load public folder
