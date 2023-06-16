@@ -99,7 +99,7 @@ app.get("/spaceUser", function (req, res) {
 app.get("/spaceEdit", function (req, res) {
   res.render("pages/spaceEdit");
 });
-app.get("/managerUsers", function (req, res) {
+app.get("/manage-users", function (req, res) {
   res.render("pages/managerUsers");
 });
 // load public folder
