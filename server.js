@@ -108,7 +108,7 @@ app.get("/space-edit", requireAuth, function (req, res) {
   res.render("pages/spaceEdit");
 });
 app.get("/space-users", requireAuth, function (req, res) {
-  res.render("pages/managerUsers");
+  res.render("pages/spaceUser");
 });
 app.get("/oil", requireAuth, function (req, res) {
   res.render("pages/oil", { user: req.session.user });
