@@ -5,21 +5,23 @@
   </head>
   <body class="container">
     <header>
-      <%- include('../partials/header', { titulo: 'Cadastro de Espaço',
-      anterior: '/espacos'}); %>
+      <%- include('../partials/header', { titulo: 'Editar Espaço', anterior:
+      '/spaces'}); %>
     </header>
+    <%if(space){%>
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm m-4">
       <form id="form-cadastro-espaco" method="POST" class="space-y-6">
         <div>
           <label
-            for="nomeespaco"
+            for="name"
             class="block text-sm font-medium leading-6 text-black"
             >Nome do espaço</label
           >
           <div class="mt-2">
             <input
-              id="nomeespaco"
-              name="nomeespaco"
+              id="name"
+              name="name"
+              value="<%=space.name%>"
               type="text"
               required
               class="block w-full rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-lime-600 sm:text-sm sm:leading-6"
@@ -36,12 +38,12 @@
               <input
                 id="espaco-option-1"
                 type="radio"
-                name="tipoespacos"
+                name="type"
                 value="Casa"
                 class="h-4 w-4 border-grey-600 text-lime-600 focus:ring-2 focus:ring-lime-600"
                 aria-labelledby="espaco-option-1"
                 aria-describedby="espaco-option-1"
-                checked=""
+                checked
               />
               <label
                 for="espaco-option-1"
@@ -55,7 +57,7 @@
               <input
                 id="espaco-option-2"
                 type="radio"
-                name="tipoespacos"
+                name="type"
                 value="Predio"
                 class="h-4 w-4 border-gray-600 text-lime-600 focus:ring-2 focus:ring-lime-600"
                 aria-labelledby="espaco-option-2"
@@ -73,7 +75,7 @@
               <input
                 id="espaco-option-3"
                 type="radio"
-                name="tipoespacos"
+                name="type"
                 value="Condominio"
                 class="h-4 w-4 border-gray-600 text-lime-600 focus:ring-2 focus:ring-lime-600"
                 aria-labelledby="espaco-option-3"
@@ -91,7 +93,7 @@
               <input
                 id="espaco-option-4"
                 type="radio"
-                name="tipoespacos"
+                name="type"
                 value="Empresa"
                 class="h-4 w-4 border-gray-600 text-lime-600 focus:ring-2 focus:ring-lime-600"
                 aria-labelledby="espaco-option-4"
@@ -108,58 +110,24 @@
         </div>
         <div>
           <label
-            for="localizacao"
+            for="street"
             class="block text-sm font-medium leading-6 text-black"
             >Localização</label
           >
           <div class="mt-2">
             <input
-              id="localizacao"
-              name="localizacao"
+              id="street"
+              name="street"
               type="text"
+              value="<%=space.street%>"
               class="block w-full rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-lime-600 sm:text-sm sm:leading-6"
             />
           </div>
         </div>
-        <div>
-          <div class="flex items-center justify-between">
-            <label
-              for="proprietario"
-              class="block text-sm font-medium leading-6 text-black"
-              >Proprietário do espaço</label
-            >
-          </div>
-          <div class="mt-2">
-            <input
-              id="proprietario"
-              name="proprietario"
-              type="text"
-              required
-              class="block w-full rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-lime-600 sm:text-sm sm:leading-6"
-            />
-          </div>
-        </div>
-        <div>
-          <div class="flex items-center justify-between">
-            <label
-              for="membros"
-              class="block text-sm font-medium leading-6 text-black"
-              >Membros</label
-            >
-          </div>
-          <div class="mt-2">
-            <input
-              id="membros"
-              name="membros"
-              type="text"
-              class="block w-full rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-lime-600 sm:text-sm sm:leading-6"
-            />
-          </div>
-        </div>
+        <%}%>
 
         <div class="flex justify-center">
           <button
-            type="submit"
             id="submit-cadastro"
             href="#"
             class="flex justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"

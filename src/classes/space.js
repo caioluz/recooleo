@@ -24,10 +24,29 @@ module.exports = class Space {
       body: JSON.stringify(obj),
     });
     const result = await response.json();
+
+    return result.id;
+  }
+
+  async edit(id) {
+    const obj = { ...this };
+    const res = await fetch(`http://localhost:3000/spaces/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(obj),
+    });
+    const data = await res.json();
   }
 
   static async fecth() {
     const res = await fetch("http://localhost:3000/spaces");
+    const data = await res.json();
+    return data;
+  }
+  static async fecthSpaceById(id) {
+    const res = await fetch(`http://localhost:3000/spaces/${id}`);
     const data = await res.json();
     return data;
   }

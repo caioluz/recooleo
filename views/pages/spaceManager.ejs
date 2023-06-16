@@ -5,19 +5,25 @@
   </head>
   <body class="container">
     <header>
-      <%- include('../partials/header', { titulo: 'Edifício Novo Mirante',
-      anterior: '/' }); %>
+      <%- include('../partials/header', { titulo: 'Espaço', anterior: '/spaces'
+      }); %>
     </header>
 
     <main>
+      <div class="flex min-h-full p-6 bg-gray-300 justify-center">
+        <%= space.name %>
+      </div>
+      <% if(user.id === space.owner){%>
       <div class="p-4">
         <div class="flex justify-center">
-          <button
-            type="submit"
-            class="flex items-center justify-center text-white bg-lime-500 hover:bg-lime-500 focus:ring-4 focus:outline-none focus:ring-lime-400 font-medium rounded-lg px-5 py-2.5 mx-auto"
+          <a href="/space-edit?id=<%=space.id%>"
+            ><button
+              type="submit"
+              class="flex items-center justify-center text-white bg-lime-500 hover:bg-lime-500 focus:ring-4 focus:outline-none focus:ring-lime-400 font-medium rounded-lg px-5 py-2.5 mx-auto"
+            >
+              Editar espaço
+            </button></a
           >
-            Editar espaço
-          </button>
         </div>
       </div>
 
@@ -49,15 +55,18 @@
           </div>
 
           <div class="flex justify-center">
-            <button
-              type="submit"
-              class="flex items-center justify-center text-white bg-lime-500 hover:bg-lime-500 focus:ring-4 focus:outline-none focus:ring-lime-400 font-medium rounded-lg px-4 py-2 mx-auto mb-4"
+            <a href="/space-users?id=<%=space.id%>"
+              ><button
+                type="submit"
+                class="flex items-center justify-center text-white bg-lime-500 hover:bg-lime-500 focus:ring-4 focus:outline-none focus:ring-lime-400 font-medium rounded-lg px-4 py-2 mx-auto mb-4"
+              >
+                Acesse
+              </button></a
             >
-              Acesse
-            </button>
           </div>
         </div>
       </div>
+      <%}%>
 
       <div class="p-4">
         <div
@@ -89,12 +98,14 @@
           </div>
 
           <div class="flex justify-center">
-            <button
-              type="submit"
-              class="flex items-center justify-center text-white bg-lime-500 hover:bg-lime-500 focus:ring-4 focus:outline-none focus:ring-lime-400 font-medium rounded-lg px-4 py-2 mx-auto mb-4"
+            <a href="/oil-container?id=<%=space.id%>"
+              ><button
+                type="submit"
+                class="flex items-center justify-center text-white bg-lime-500 hover:bg-lime-500 focus:ring-4 focus:outline-none focus:ring-lime-400 font-medium rounded-lg px-4 py-2 mx-auto mb-4"
+              >
+                Acesse
+              </button></a
             >
-              Acesse
-            </button>
           </div>
         </div>
       </div>

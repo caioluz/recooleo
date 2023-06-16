@@ -6,12 +6,14 @@
   <body class="container">
     <header>
       <%- include('../partials/header', { titulo: 'Gerenciar Usuários',
-      anterior: '/' }); %>
+      anterior: '/spaces' }); %>
     </header>
 
     <main>
       <div class="p-4">
         <b>Solicitações</b>
+        <% if(pendingMembers && pendingMembers.length>0){%> <%
+        pendingMembers.forEach(function(member){ %>
         <div
           class="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden"
         >
@@ -32,7 +34,7 @@
                 />
               </svg>
               <div class="text-gray-700">
-                <p class="mt-2">Mary Inês</p>
+                <p class="mt-2"><%=member.user.name%></p>
               </div>
             </div>
             <div class="text-center">
@@ -41,16 +43,40 @@
                   type="submit"
                   class="flex items-center justify-center text-white bg-lime-500 hover:bg-lime-500 focus:ring-4 focus:outline-none focus:ring-lime-400 font-medium rounded-lg px-4 py-2 mb-4"
                 >
-                  <span class="text-sm">Adicionar</span>
+                  <span class="text-sm">Aceitar</span>
+                </button>
+                <button
+                  type="submit"
+                  class="flex items-center justify-center text-white bg-slate-400 hover:bg-slate-500 focus:ring-4 focus:outline-none focus:ring-lime-400 font-medium rounded-lg px-4 py-2 mb-4"
+                >
+                  <span class="text-sm">Negar</span>
                 </button>
               </div>
             </div>
           </div>
         </div>
+        <br />
+        <%})}else{%>
+        <div
+          class="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden"
+        >
+          <div class="flex justify-between items-center p-4">
+            <div class="flex items-center">
+              <div class="text-gray-700">
+                <p class="mt-2">Não há solicitações no momento</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%}%>
       </div>
 
       <div class="p-4">
         <b>Membros</b>
+        <%if(approvedMembers && approvedMembers.length>0){%> <%
+        approvedMembers.forEach(function(member){ %> <% if(member.user.id !==
+        user.id){%>
+
         <div
           class="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden"
         >
@@ -72,7 +98,7 @@
               </svg>
 
               <div class="text-gray-700">
-                <p class="mt-2">Amanda Lima</p>
+                <p class="mt-2"><%=member.user.name%></p>
               </div>
             </div>
             <div class="text-center">
@@ -87,6 +113,7 @@
             </div>
           </div>
         </div>
+        <%}});}%>
         <br />
         <div
           class="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden"
@@ -109,7 +136,7 @@
               </svg>
 
               <div class="text-gray-700">
-                <p class="mt-2">Matheus Dutra (Você)</p>
+                <p class="mt-2"><%=user.name%> (Você)</p>
               </div>
             </div>
           </div>

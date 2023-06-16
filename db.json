@@ -29,61 +29,120 @@
       "email": "caio@gmail.com",
       "password": "Caco123",
       "id": 5
+    },
+    {
+      "name": "Joel",
+      "email": "joel@gmail.com.br",
+      "password": "jj123",
+      "id": 6
+    },
+    {
+      "name": "Pedro Nascimento",
+      "email": "pedro.nasc@gmail.com",
+      "password": "Pedro123",
+      "id": 7
     }
   ],
   "spaces": [
     {
-      "name": "Edificio Novo Mirante",
-      "type": "Predio",
-      "street": "Alameda dos Sabiás",
-      "owner": 2,
-      "bottle": {
-        "liters_total": 30,
-        "liters_current": 0
+      "name": "Familia Luz",
+      "type": "Casa",
+      "street": "Rua Magalhães Pinto, 103",
+      "owner": 5,
+      "coletor": {
+        "litrosTotal": 30,
+        "litrosAtual": 0
       },
       "id": 1
     },
     {
-      "name": "Edificio Conupos Corporate",
+      "name": "Edificio Novo Mirante",
       "type": "Predio",
-      "street": "Alameda dos Sabiás",
-      "owner": 2,
-      "bottle": {
-        "liters_total": 30,
-        "liters_current": 0
+      "street": "alameda dos sabias",
+      "owner": 5,
+      "coletor": {
+        "litrosTotal": 30,
+        "litrosAtual": 0
       },
       "id": 2
     },
     {
-      "name": "Edificio Água Branca",
-      "type": "Predio",
-      "street": "Rua da Lareira",
-      "owner": 3,
-      "bottle": {
-        "liters_total": 30,
-        "liters_current": 0
+      "name": "Casa dos Diniz",
+      "type": "Casa",
+      "street": "Barreiro",
+      "owner": 4,
+      "coletor": {
+        "litrosTotal": 30,
+        "litrosAtual": 0
       },
       "id": 3
+    },
+    {
+      "name": "Familia Nascimento",
+      "type": "Casa",
+      "street": "Rua Portugal, Eldorado 143",
+      "owner": 7,
+      "coletor": {
+        "litrosTotal": 30,
+        "litrosAtual": 0
+      },
+      "id": 4
     }
   ],
   "spaceUser": [
     {
-      "idUser": 1,
-      "idSpace": 2,
+      "idUser": 5,
+      "idSpace": 1,
       "approved": 1,
       "id": 1
     },
     {
       "idUser": 2,
-      "idSpace": 2,
-      "approved": 1,
+      "idSpace": 1,
+      "approved": 0,
       "id": 2
     },
     {
-      "idUser": 2,
+      "idUser": 3,
+      "idSpace": 1,
+      "approved": 0,
+      "id": 3
+    },
+    {
+      "idUser": 5,
+      "idSpace": 2,
+      "approved": 1,
+      "id": 4
+    },
+    {
+      "idUser": 4,
       "idSpace": 3,
       "approved": 1,
-      "id": 3
+      "id": 5
+    },
+    {
+      "idUser": 4,
+      "idSpace": 2,
+      "approved": 0,
+      "id": 6
+    },
+    {
+      "idUser": 6,
+      "idSpace": 3,
+      "approved": 0,
+      "id": 7
+    },
+    {
+      "idUser": 7,
+      "idSpace": 4,
+      "approved": 1,
+      "id": 8
+    },
+    {
+      "idUser": 7,
+      "idSpace": 2,
+      "approved": 0,
+      "id": 9
     }
   ]
 }
