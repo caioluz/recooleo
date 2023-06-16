@@ -61,7 +61,7 @@ app.get("/login", requireNotAuth, function (req, res) {
 app.post("/login", urlencodedParser, async function (req, res) {
   let { email, password } = req.body;
   const user = await User.fecth(email);
-
+  console.log(user);
   if (user && user[0].password === password) {
     req.session.user = user[0];
     res.redirect("/");
@@ -118,11 +118,9 @@ app.get("/space-edit", requireAuth, async function (req, res) {
   const space = await Space.fecthSpaceById(idSpace);
   res.render("pages/spaceEdit", { space: space });
 });
-
 app.post("/space-edit", urlencodedParser, function (req, res) {
   const { name, type, street } = req.body;
 });
-
 app.get("/space-users", requireAuth, async function (req, res) {
   const users = await SpaceUser.getAllUsersBySpace(req.query.id);
   const approvedMembers = users.filter((user) => user.approved === 1);
@@ -135,18 +133,23 @@ app.get("/space-users", requireAuth, async function (req, res) {
   });
 });
 app.get("/oil", requireAuth, function (req, res) {
-  res.render("pages/oil", { user: req.session.user });
+  res.render("pages/oil", { spaceId: req.query.id });
 });
-app.get("/oil-container", requireAuth, function (req, res) {
+app.get("/oil-container", requireAuth, async function (req, res) {
+  const space = await Space.fecthSpaceById(req.query.id);
+  const percent = Math.round(space.coletor.litrosAtual * 100 / space.coletor.litrosTotal);
+
   res.render("pages/oilContainer", {
     user: req.session.user,
-    space: {
-      nome: "Ed. Mirante",
-      oil_current: 20,
-      oil_max: 30,
-      oil_percent: 80,
-    },
+    space: space,
+    percent: percent
   });
+});
+app.post("/oil-container", urlencodedParser, async function (req, res) {
+  const { id, quantity } = req.body;
+  const url = "/oil-container?id=" + id;
+  Space.setLiters(id, quantity);
+  res.redirect(url)
 });
 app.get("/participate", requireAuth, async function (req, res) {
   const allSpaces = await Space.fecth();

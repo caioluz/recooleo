@@ -40,11 +40,31 @@ module.exports = class Space {
     const data = await res.json();
   }
 
+  static async setLiters(id, litros) {
+    const resGet = await fetch(`http://localhost:3000/spaces/${id}`);
+    const dataSpace = await resGet.json();
+    const space = dataSpace;
+    console.log(space);
+    space.coletor.litrosAtual += parseInt(litros);
+
+    const obj = { ...space };
+    console.log(obj);
+    const res = await fetch(`http://localhost:3000/spaces/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(obj),
+    });
+    const data = await res.json();
+  }
+
   static async fecth() {
     const res = await fetch("http://localhost:3000/spaces");
     const data = await res.json();
     return data;
   }
+
   static async fecthSpaceById(id) {
     const res = await fetch(`http://localhost:3000/spaces/${id}`);
     const data = await res.json();

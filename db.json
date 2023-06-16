@@ -87,6 +87,17 @@
         "litrosAtual": 0
       },
       "id": 4
+    },
+    {
+      "name": "Ed. Pantanal",
+      "type": "Predio",
+      "street": "Rua Patagonia, 82",
+      "owner": 2,
+      "coletor": {
+        "litrosTotal": 30,
+        "litrosAtual": 29
+      },
+      "id": 5
     }
   ],
   "spaceUser": [
@@ -143,6 +154,12 @@
       "idSpace": 2,
       "approved": 0,
       "id": 9
+    },
+    {
+      "idUser": 2,
+      "idSpace": 5,
+      "approved": 1,
+      "id": 10
     }
   ]
 }
