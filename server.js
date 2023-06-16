@@ -98,18 +98,24 @@ app.get("/space-manager", requireAuth, function (req, res) {
 app.get("/space-remove", requireAuth, function (req, res) {
   res.render("pages/spaceRemove");
 });
+app.get("/space-edit", requireAuth, function (req, res) {
+  res.render("pages/spaceEdit");
+});
+app.get("/space-users", requireAuth, function (req, res) {
+  res.render("pages/managerUsers");
+});
 app.get("/oil", requireAuth, function (req, res) {
   res.render("pages/oil", { user: req.session.user });
 });
 app.get("/oil-container", requireAuth, function (req, res) {
-  res.render("pages/oilContainer", { 
+  res.render("pages/oilContainer", {
     user: req.session.user,
     space: {
-      nome: 'Ed. Mirante',
+      nome: "Ed. Mirante",
       oil_current: 20,
       oil_max: 30,
-      oil_percent: 80
-    }
+      oil_percent: 80,
+    },
   });
 });
 
