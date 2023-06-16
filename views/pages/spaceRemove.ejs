@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+  <header>
+    <%-
+      include('../partials/header', {
+        titulo: 'Importante',
+        anterior: '/spaces'
+      });
+    %>
+  </header>
+
+  <main>
+    <div class="p-6 text-gray-600">
+      <p>Você selecionou a opção “Apagar espaço”. Antes de prosseguir, esteja ciente que:</p>
+      <ul class="list-disc list-inside pt-6">
+        <li class="pb-4">A exclusão do espaço é permanente e irreversível, uma vez confirmada não é possível ter acesso à aquele espaço novamente. </li>
+        <li class="pb-4">A partir da confirmação, nenhum membro do espaço poderá encontrá-lo disponível novamente..</li>
+      </ul>
+      <div class="text-center mt-4">
+        <img src="/images/remover.png" class="w-24 mx-auto" alt="" class="mx-auto">
+        <a type="button" href="/oil-container" style="background-color: #C53F3F;"
+          class="inline-block mx-auto mt-10 text-white hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg px-5 py-2.5">
+          Estou ciente, apagar espaço
+        </a>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

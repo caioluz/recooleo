@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+  <body class="container">
+    <header>
+      <%- include('../partials/header', { titulo: 'Cadastro de Espaço',
+      anterior: '/spaces' }); %>
+    </header>
+    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm m-4">
+      <form id="form-cadastro-espaco" method="POST" class="space-y-6">
+        <div>
+          <label
+            for="nomeespaco"
+            class="block text-sm font-medium leading-6 text-black"
+            >Nome do espaço</label
+          >
+          <div class="mt-2">
+            <input
+              id="nomeespaco"
+              name="nomeespaco"
+              type="text"
+              required
+              class="block w-full rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-lime-600 sm:text-sm sm:leading-6"
+            />
+          </div>
+        </div>
+        <div class="max-w-lg mx-auto">
+          <p class="text-sm font-medium">Categoria</p>
+          <br />
+          <fieldset class="mb-5">
+            <legend class="sr-only">Categorias</legend>
+
+            <div class="flex items-center mb-4">
+              <input
+                id="espaco-option-1"
+                type="radio"
+                name="tipoespacos"
+                value="Casa"
+                class="h-4 w-4 border-grey-600 text-lime-600 focus:ring-2 focus:ring-lime-600"
+                aria-labelledby="espaco-option-1"
+                aria-describedby="espaco-option-1"
+                checked=""
+              />
+              <label
+                for="espaco-option-1"
+                class="text-sm font-medium text-gray-900 ml-2 block"
+              >
+                Casa
+              </label>
+            </div>
+
+            <div class="flex items-center mb-4">
+              <input
+                id="espaco-option-2"
+                type="radio"
+                name="tipoespacos"
+                value="Predio"
+                class="h-4 w-4 border-gray-600 text-lime-600 focus:ring-2 focus:ring-lime-600"
+                aria-labelledby="espaco-option-2"
+                aria-describedby="espaco-option-2"
+              />
+              <label
+                for="espaco-option-2"
+                class="text-sm font-medium text-gray-900 ml-2 block"
+              >
+                Prédio
+              </label>
+            </div>
+
+            <div class="flex items-center mb-4">
+              <input
+                id="espaco-option-3"
+                type="radio"
+                name="tipoespacos"
+                value="Condominio"
+                class="h-4 w-4 border-gray-600 text-lime-600 focus:ring-2 focus:ring-lime-600"
+                aria-labelledby="espaco-option-3"
+                aria-describedby="espaco-option-3"
+              />
+              <label
+                for="espaco-option-3"
+                class="text-sm font-medium text-gray-900 ml-2 block"
+              >
+                Condomínio
+              </label>
+            </div>
+
+            <div class="flex items-center mb-4">
+              <input
+                id="espaco-option-4"
+                type="radio"
+                name="tipoespacos"
+                value="Empresa"
+                class="h-4 w-4 border-gray-600 text-lime-600 focus:ring-2 focus:ring-lime-600"
+                aria-labelledby="espaco-option-4"
+                aria-describedby="espaco-option-4"
+              />
+              <label
+                for="espaco-option-4"
+                class="text-sm font-medium text-gray-900 ml-2 block"
+              >
+                Empresa
+              </label>
+            </div>
+          </fieldset>
+        </div>
+        <div>
+          <label
+            for="localizacao"
+            class="block text-sm font-medium leading-6 text-black"
+            >Localização</label
+          >
+          <div class="mt-2">
+            <input
+              id="localizacao"
+              name="localizacao"
+              type="text"
+              class="block w-full rounded-md border-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-lime-600 sm:text-sm sm:leading-6"
+            />
+          </div>
+        </div>
+        <div class="flex justify-center">
+          <button
+            type="submit"
+            id="submit-cadastro"
+            href="#"
+            class="flex justify-center rounded-md bg-lime-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-lime-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Cadastrar
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
