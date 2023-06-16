@@ -59,7 +59,7 @@ app.get("/login", requireNotAuth, function (req, res) {
   res.render("pages/login");
 });
 app.post("/login", urlencodedParser, async function (req, res) {
-  let {email, password} = req.body;
+  let { email, password } = req.body;
   const user = await User.fecth(email);
 
   if (user && user[0].password === password) {
@@ -80,35 +80,59 @@ app.get("/info", requireAuth, function (req, res) {
   res.render("pages/info");
 });
 app.get("/spaces", requireAuth, async function (req, res) {
-  const spaces = await SpaceUser.getSpaceByUser(req.session.user.id);
+  const spaces = await SpaceUser.getApprovedSpacesByUser(req.session.user.id);
 
-  res.render("pages/spaces", { 
+  res.render("pages/spaces", {
     user: req.session.user,
-    spaces: spaces
+    spaces: spaces,
   });
 });
 app.get("/space-register", requireAuth, function (req, res) {
   res.render("pages/spaceRegister");
 });
-app.post("/space-register", urlencodedParser, function (req, res) {
+app.post("/space-register", urlencodedParser, async function (req, res) {
   const { name, type, street } = req.body;
   const owner = req.session.user.id;
   let space = new Space(name, type, street, owner);
 
-  space.add();
+  const idSpace = await space.add();
+
+  // Atribui o usuário da sessão como membro do grupo que ele criou
+  let spaceUser = new SpaceUser(req.session.user.id, idSpace, 1);
+
+  spaceUser.add();
+
   res.redirect("/spaces");
 });
-app.get("/space-manager", requireAuth, function (req, res) {
-  res.render("pages/spaceManager");
+app.get("/space-manager", requireAuth, async function (req, res) {
+  const idSpace = req.query.id;
+  const space = await Space.fecthSpaceById(idSpace);
+
+  res.render("pages/spaceManager", { space: space, user: req.session.user });
 });
 app.get("/space-remove", requireAuth, function (req, res) {
   res.render("pages/spaceRemove");
 });
-app.get("/space-edit", requireAuth, function (req, res) {
-  res.render("pages/spaceEdit");
+app.get("/space-edit", requireAuth, async function (req, res) {
+  const idSpace = req.query.id;
+  const space = await Space.fecthSpaceById(idSpace);
+  res.render("pages/spaceEdit", { space: space });
 });
-app.get("/space-users", requireAuth, function (req, res) {
-  res.render("pages/spaceUser");
+
+app.post("/space-edit", urlencodedParser, function (req, res) {
+  const { name, type, street } = req.body;
+});
+
+app.get("/space-users", requireAuth, async function (req, res) {
+  const users = await SpaceUser.getAllUsersBySpace(req.query.id);
+  const approvedMembers = users.filter((user) => user.approved === 1);
+  const pendingMembers = users.filter((user) => user.approved === 0);
+
+  res.render("pages/spaceUser", {
+    approvedMembers: approvedMembers,
+    pendingMembers: pendingMembers,
+    user: req.session.user,
+  });
 });
 app.get("/oil", requireAuth, function (req, res) {
   res.render("pages/oil", { user: req.session.user });
@@ -125,15 +149,31 @@ app.get("/oil-container", requireAuth, function (req, res) {
   });
 });
 app.get("/participate", requireAuth, async function (req, res) {
-  const spaces = await Space.fecth();
+  const allSpaces = await Space.fecth();
+
+  // Busca todos os espaços que o usuário está, mesmo que a solicitação esteja pendente
+  const userSpaces = await SpaceUser.getAllSpacesByUser(req.session.user.id);
+
+  const avaliableSpaces = allSpaces.filter((space) => {
+    let avaliable = true;
+    for (let i = 0; i < userSpaces.length; i++) {
+      if (userSpaces[i][0].id === space.id) {
+        avaliable = false; // em filter tudo que retorna falso não entra no array de retorno
+      }
+    }
+    return avaliable; // só entra no array de retorno se retornar true(não ser encontrado nos epaços do usuário)
+  });
   res.render("pages/participate", {
     user: req.session.user,
-    spaces: spaces,
+    spaces: avaliableSpaces,
   });
 });
 app.post("/participate", urlencodedParser, function (req, res) {
-  const { space } = req.body;
+  const space = Number(req.body.space);
+  const spaceUser = new SpaceUser(req.session.user.id, space, 0);
 
+  spaceUser.add();
+  res.redirect("/spaces");
 });
 
 // load public folder
