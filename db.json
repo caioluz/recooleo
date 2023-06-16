@@ -1,142 +1,88 @@
 {
   "users": [
     {
-      "nome": "Mary Ines",
+      "name": "Mary Ines",
       "email": "mary.ines@gmail.com",
-      "senha": "teste123",
-      "espacos": [
-        {
-          "id": 1,
-          "nomeespaco": "Edificio Novo Mirante"
-        }
-      ],
+      "password": "teste123",
       "id": 1
     },
     {
-      "nome": "Matheus Dutra",
+      "name": "Matheus Dutra",
       "email": "teco.dutra@gmail.com",
-      "senha": "teste123",
-      "espacos": [
-        {
-          "id": 1,
-          "nomeespaco": "Edificio Novo Mirante"
-        }
-      ],
+      "password": "teste123",
       "id": 2
     },
     {
-      "nome": "Amanda Lima",
+      "name": "Amanda Lima",
       "email": "aglima.amanda@gmail.com",
-      "senha": "Teste",
-      "espacos": [
-        {
-          "id": 1,
-          "nomeespaco": "Edificio Novo Mirante"
-        }
-      ],
+      "password": "Teste",
       "id": 3
     },
     {
-      "nome": "Eduardo Henrique Kenayo Luz",
+      "name": "Eduardo Henrique Kenayo Luz",
       "email": "dudu.diniz@gmail.com",
-      "senha": "duba24",
-      "espacos": [],
+      "password": "duba24",
       "id": 4
     },
     {
-      "nome": "Caio Luz",
+      "name": "Caio Luz",
       "email": "caio@gmail.com",
-      "senha": "Caco123",
-      "espacos": [
-        {
-          "id": 1,
-          "nomeespaco": "Edificio Novo Mirante"
-        },
-        {
-          "id": 2,
-          "nomeespaco": "Edificio Água Branca"
-        }
-      ],
+      "password": "Caco123",
       "id": 5
     }
   ],
-  "espacos": [
+  "spaces": [
     {
-      "nomeespaco": "Edificio Novo Mirante",
-      "tipoespacos": "Predio",
-      "localizacao": "Alameda dos Sabiás",
-      "proprietario": 2,
-      "membros": [
-        {
-          "id": 1,
-          "Nome": "Mary Ines"
-        },
-        {
-          "id": 2,
-          "Nome": "Matheus Dutra"
-        },
-        {
-          "id": 4,
-          "Nome": "Amanda Lima"
-        },
-        {
-          "id": 5,
-          "Nome": "Caio Luz"
-        }
-      ],
-      "coletor": {
-        "litrosTotal": 30,
-        "litrosAtual": 0
+      "name": "Edificio Novo Mirante",
+      "type": "Predio",
+      "street": "Alameda dos Sabiás",
+      "owner": 2,
+      "bottle": {
+        "liters_total": 30,
+        "liters_current": 0
       },
-      "solicitacoes": [
-        {
-          "id": 1,
-          "Nome": "Mary Ines"
-        },
-        {
-          "id": 5,
-          "Nome": "Caio Luz"
-        }
-      ],
       "id": 1
     },
     {
-      "nomeespaco": "Edificio Conupos Corporate",
-      "tipoespacos": "Predio",
-      "localizacao": "Alameda dos Sabiás",
-      "proprietario": 5,
-      "membros": [
-        {
-          "id": 1,
-          "Nome": "Mary Ines"
-        },
-        {
-          "id": 2,
-          "Nome": "Matheus Dutra"
-        },
-        {
-          "id": 4,
-          "Nome": "Amanda Lima"
-        }
-      ],
-      "coletor": {
-        "litrosTotal": 30,
-        "litrosAtual": 0
+      "name": "Edificio Conupos Corporate",
+      "type": "Predio",
+      "street": "Alameda dos Sabiás",
+      "owner": 2,
+      "bottle": {
+        "liters_total": 30,
+        "liters_current": 0
       },
-      "solicitacoes": [],
       "id": 2
     },
     {
-      "nomeespaco": "Edificio Água Branca",
-      "tipoespacos": "Predio",
-      "localizacao": "Rua da Lareira",
-      "proprietario": 3,
-      "membros": [5],
-      "coletor": {
-        "litrosTotal": 30,
-        "litrosAtual": 0
+      "name": "Edificio Água Branca",
+      "type": "Predio",
+      "street": "Rua da Lareira",
+      "owner": 3,
+      "bottle": {
+        "liters_total": 30,
+        "liters_current": 0
       },
-      "solicitacoes": [],
+      "id": 3
+    }
+  ],
+  "spaceUser": [
+    {
+      "idUser": 1,
+      "idSpace": 2,
+      "approved": 1,
+      "id": 1
+    },
+    {
+      "idUser": 2,
+      "idSpace": 2,
+      "approved": 1,
+      "id": 2
+    },
+    {
+      "idUser": 2,
+      "idSpace": 3,
+      "approved": 1,
       "id": 3
     }
   ]

@@ -2,14 +2,14 @@ const fetch = require("node-fetch");
 
 // Classe Usuário
 module.exports = class User {
-  constructor(nome, email, senha) {
-    this.nome = nome;
+  constructor(name, email, password) {
+    this.name = name;
     this.email = email;
-    this.senha = senha;
+    this.password = password;
   }
 
   async add() {
-    const objUser = {
+    const obj = {
       ...this,
     };
 
@@ -18,33 +18,26 @@ module.exports = class User {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(objUser),
+      body: JSON.stringify(obj),
     });
-
     const result = await response.json();
-    console.log("Usuário adicionado: " + result);
   }
 
   async edit(id) {
-    const objUser = { ...this };
-
+    const obj = { ...this };
     const res = await fetch(`http://localhost:3000/users/${id}`, {
       method: "PUT",
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify(objUser),
+      body: JSON.stringify(obj),
     });
-
     const data = await res.json();
-    console.log("Usuário editado: " + data);
   }
 
-  static async fecthUser(email) {
+  static async fecth(email) {
     const res = await fetch(`http://localhost:3000/users?email=${email}`);
-
     const data = await res.json();
-
     return data;
   }
 };
