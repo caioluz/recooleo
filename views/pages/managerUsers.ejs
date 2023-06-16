@@ -1,1 +1,120 @@
-Pra comer cu de curioso
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+  <body class="container">
+    <header>
+      <%- include('../partials/header', { titulo: 'Gerenciar Usuários',
+      anterior: '/' }); %>
+    </header>
+
+    <main>
+      <div class="p-4">
+        <b>Solicitações</b>
+        <div
+          class="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden"
+        >
+          <div class="flex justify-between items-center p-4">
+            <div class="flex items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-10 h-10 mr-4"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z"
+                />
+              </svg>
+              <div class="text-gray-700">
+                <p class="mt-2">Mary Inês</p>
+              </div>
+            </div>
+            <div class="text-center">
+              <div class="flex justify-center items-center">
+                <button
+                  type="submit"
+                  class="flex items-center justify-center text-white bg-lime-500 hover:bg-lime-500 focus:ring-4 focus:outline-none focus:ring-lime-400 font-medium rounded-lg px-4 py-2 mb-4"
+                >
+                  <span class="text-sm">Adicionar</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4">
+        <b>Membros</b>
+        <div
+          class="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden"
+        >
+          <div class="flex justify-between items-center p-4">
+            <div class="flex items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-10 h-10 mr-4"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M22 10.5h-6m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z"
+                />
+              </svg>
+
+              <div class="text-gray-700">
+                <p class="mt-2">Amanda Lima</p>
+              </div>
+            </div>
+            <div class="text-center">
+              <div class="flex justify-center items-center">
+                <button
+                  type="submit"
+                  class="flex items-center justify-center text-white bg-lime-500 hover:bg-lime-500 focus:ring-4 focus:outline-none focus:ring-lime-400 font-medium rounded-lg px-4 py-2 mb-4"
+                >
+                  <span class="text-sm">Remover</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div
+          class="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden"
+        >
+          <div class="flex justify-between items-center p-4">
+            <div class="flex items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-10 h-10 mr-4"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+                />
+              </svg>
+
+              <div class="text-gray-700">
+                <p class="mt-2">Matheus Dutra (Você)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
