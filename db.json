@@ -155,6 +155,12 @@
       "idSpace": "2",
       "approved": 1,
       "id": 9
+    },
+    {
+      "idUser": "2",
+      "idSpace": "4",
+      "approved": 1,
+      "id": 10
     }
   ]
 }

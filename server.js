@@ -197,12 +197,14 @@ app.post("/manage-user", urlencodedParser, function (req, res) {
   const idUserReq = req.query.idUserReq;
   const spaceId = req.query.idSpace;
   SpaceUser.edit(spaceId, idUserReq, type);
+  res.redirect(`/space-users?id=${spaceId}`);
 });
 
 app.post("/drain-out", urlencodedParser, function (req, res) {
   const spaceId = req.query.id;
 
   Space.drainOut(spaceId);
+  res.redirect(`/oil-container?id=${spaceId}`);
 });
 
 // load public folder
