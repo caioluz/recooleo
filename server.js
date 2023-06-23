@@ -88,7 +88,7 @@ app.get("/spaces", requireAuth, async function (req, res) {
   });
 });
 app.get("/space-register", requireAuth, function (req, res) {
-  res.render("pages/spaceRegister");
+  res.render("pages/spaceregister");
 });
 app.post("/space-register", urlencodedParser, async function (req, res) {
   const { name, type, street } = req.body;
@@ -197,12 +197,14 @@ app.post("/manage-user", urlencodedParser, function (req, res) {
   const idUserReq = req.query.idUserReq;
   const spaceId = req.query.idSpace;
   SpaceUser.edit(spaceId, idUserReq, type);
+  res.redirect("/spaces");
 });
 
 app.post("/drain-out", urlencodedParser, function (req, res) {
   const spaceId = req.query.id;
 
   Space.drainOut(spaceId);
+  res.redirect("/space-users");
 });
 
 // load public folder
