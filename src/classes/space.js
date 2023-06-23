@@ -40,14 +40,69 @@ module.exports = class Space {
     const data = await res.json();
   }
 
+  static async setLiters(id, litros) {
+    const resGet = await fetch(`http://localhost:3000/spaces/${id}`);
+    const dataSpace = await resGet.json();
+    const space = dataSpace;
+
+    const soma = space.coletor.litrosAtual + parseInt(litros);
+    if (soma <= 30) {
+      space.coletor.litrosAtual += parseInt(litros);
+
+      const obj = { ...space };
+
+      const res = await fetch(`http://localhost:3000/spaces/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(obj),
+      });
+      const data = await res.json();
+    }
+  }
+
   static async fecth() {
     const res = await fetch("http://localhost:3000/spaces");
     const data = await res.json();
     return data;
   }
+
   static async fecthSpaceById(id) {
     const res = await fetch(`http://localhost:3000/spaces/${id}`);
     const data = await res.json();
     return data;
+  }
+
+  static async deleteSpace(id) {
+    const res = await fetch(`http://localhost:3000/spaces/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+  }
+
+  static async drainOut(id) {
+    const res = await fetch(`http://localhost:3000/spaces/${id}`);
+    const data = await res.json();
+
+    const update = {
+      ...data,
+      coletor: {
+        litrosTotal: 30,
+        litrosAtual: 0,
+      },
+    };
+
+    const drain = await fetch(`http://localhost:3000/spaces/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(update),
+    });
+    const dataDrain = await drain.json();
   }
 };

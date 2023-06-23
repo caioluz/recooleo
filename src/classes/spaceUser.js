@@ -80,4 +80,60 @@ module.exports = class SpaceUser {
 
     return users;
   }
+
+  static async delete(id) {
+    const url = "http://localhost:3000/spaceUser?idSpace=" + id;
+
+    const resSpaceUser = await fetch(url);
+
+    const spacesUsers = await resSpaceUser.json();
+
+    const usersId = await Promise.all(spacesUsers.map(async (obj) => obj.id));
+
+    usersId.forEach(async (idSpaceUser) => {
+      const res = await fetch(
+        "http://localhost:3000/spaceUser/" + idSpaceUser,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const deletedSpaceUsers = await res.json();
+    });
+  }
+
+  static async edit(idSpace, idUser, type) {
+    const response = await fetch(
+      `http://localhost:3000/spaceUser?idUser=${idUser}&idSpace=${idSpace}`
+    );
+    const data = await response.json();
+
+    if (type === "deny") {
+      const res = await fetch("http://localhost:3000/spaceUser/" + data[0].id, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    }
+
+    if (type === "add") {
+      const obj = {
+        idUser: idUser,
+        idSpace: idSpace,
+        approved: 1,
+        id: data[0].id,
+      };
+      const res = await fetch("http://localhost:3000/spaceUser/" + data[0].id, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obj),
+      });
+    }
+  }
 };
