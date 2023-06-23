@@ -26,7 +26,7 @@
     },
     {
       "name": "Caio Luz",
-      "email": "caio@gmail.com",
+      "email": "henriquecaio3329@gmail.com",
       "password": "Caco123",
       "id": 5
     },
@@ -41,9 +41,32 @@
       "email": "pedro.nasc@gmail.com",
       "password": "Pedro123",
       "id": 7
+    },
+    {
+      "name": "Aline Lage",
+      "email": "aline.lage@gmail.com",
+      "password": "aline123",
+      "id": 8
+    },
+    {
+      "name": "Lara Keys",
+      "email": "laravgf@gmail.com",
+      "password": "lara123",
+      "id": 9
     }
   ],
   "spaces": [
+    {
+      "name": "Edificio Novo Mirante",
+      "type": "Predio",
+      "street": "Alameda dos Sábias",
+      "owner": 2,
+      "coletor": {
+        "litrosTotal": 30,
+        "litrosAtual": 14
+      },
+      "id": 1
+    },
     {
       "name": "Familia Luz",
       "type": "Casa",
@@ -53,23 +76,12 @@
         "litrosTotal": 30,
         "litrosAtual": 0
       },
-      "id": 1
-    },
-    {
-      "name": "Edificio Novo Mirante",
-      "type": "Predio",
-      "street": "alameda dos sabias",
-      "owner": 5,
-      "coletor": {
-        "litrosTotal": 30,
-        "litrosAtual": 0
-      },
       "id": 2
     },
     {
-      "name": "Casa dos Diniz",
+      "name": "Familia Diniz",
       "type": "Casa",
-      "street": "Barreiro",
+      "street": "Rua Jader Campos Guimarães, Barreiro",
       "owner": 4,
       "coletor": {
         "litrosTotal": 30,
@@ -78,88 +90,71 @@
       "id": 3
     },
     {
-      "name": "Familia Nascimento",
-      "type": "Casa",
-      "street": "Rua Portugal, Eldorado 143",
-      "owner": 7,
+      "name": "Ed. Alemeda",
+      "type": "Predio",
+      "street": "Rua Dois, 45 - Barreiro",
+      "owner": 5,
       "coletor": {
         "litrosTotal": 30,
         "litrosAtual": 0
       },
       "id": 4
-    },
-    {
-      "name": "Ed. Pantanal",
-      "type": "Predio",
-      "street": "Rua Patagonia, 82",
-      "owner": 2,
-      "coletor": {
-        "litrosTotal": 30,
-        "litrosAtual": 29
-      },
-      "id": 5
     }
   ],
   "spaceUser": [
     {
-      "idUser": 5,
+      "idUser": 2,
       "idSpace": 1,
       "approved": 1,
       "id": 1
     },
     {
-      "idUser": 2,
-      "idSpace": 1,
-      "approved": 0,
+      "idUser": "5",
+      "idSpace": "1",
+      "approved": 1,
       "id": 2
-    },
-    {
-      "idUser": 3,
-      "idSpace": 1,
-      "approved": 0,
-      "id": 3
     },
     {
       "idUser": 5,
       "idSpace": 2,
       "approved": 1,
-      "id": 4
+      "id": 3
     },
     {
       "idUser": 4,
       "idSpace": 3,
+      "approved": 1,
+      "id": 4
+    },
+    {
+      "idUser": 5,
+      "idSpace": 4,
       "approved": 1,
       "id": 5
     },
     {
-      "idUser": 4,
-      "idSpace": 2,
+      "idUser": 5,
+      "idSpace": 3,
       "approved": 0,
       "id": 6
     },
     {
-      "idUser": 6,
-      "idSpace": 3,
-      "approved": 0,
+      "idUser": 8,
+      "idSpace": 2,
+      "approved": 1,
       "id": 7
     },
     {
-      "idUser": 7,
-      "idSpace": 4,
+      "idUser": "4",
+      "idSpace": "2",
       "approved": 1,
       "id": 8
     },
     {
-      "idUser": 7,
-      "idSpace": 2,
-      "approved": 0,
-      "id": 9
-    },
-    {
-      "idUser": 2,
-      "idSpace": 5,
+      "idUser": "2",
+      "idSpace": "2",
       "approved": 1,
-      "id": 10
+      "id": 9
     }
   ]
 }

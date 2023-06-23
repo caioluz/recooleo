@@ -61,7 +61,7 @@ app.get("/login", requireNotAuth, function (req, res) {
 app.post("/login", urlencodedParser, async function (req, res) {
   let { email, password } = req.body;
   const user = await User.fecth(email);
-  console.log(user);
+
   if (user && user[0].password === password) {
     req.session.user = user[0];
     res.redirect("/");
@@ -111,8 +111,18 @@ app.get("/space-manager", requireAuth, async function (req, res) {
   res.render("pages/spaceManager", { space: space, user: req.session.user });
 });
 app.get("/space-remove", requireAuth, function (req, res) {
-  res.render("pages/spaceRemove");
+  const idSpace = req.query.id;
+  res.render("pages/spaceRemove", { spaceId: idSpace });
 });
+
+app.post("/space-remove", urlencodedParser, function (req, res) {
+  const spaceId = req.query.id;
+  Space.deleteSpace(spaceId);
+  SpaceUser.delete(spaceId);
+
+  res.redirect("/spaces");
+});
+
 app.get("/space-edit", requireAuth, async function (req, res) {
   const idSpace = req.query.id;
   const space = await Space.fecthSpaceById(idSpace);
@@ -130,6 +140,7 @@ app.get("/space-users", requireAuth, async function (req, res) {
     approvedMembers: approvedMembers,
     pendingMembers: pendingMembers,
     user: req.session.user,
+    spaceId: req.query.id,
   });
 });
 app.get("/oil", requireAuth, function (req, res) {
@@ -137,19 +148,21 @@ app.get("/oil", requireAuth, function (req, res) {
 });
 app.get("/oil-container", requireAuth, async function (req, res) {
   const space = await Space.fecthSpaceById(req.query.id);
-  const percent = Math.round(space.coletor.litrosAtual * 100 / space.coletor.litrosTotal);
+  const percent = Math.round(
+    (space.coletor.litrosAtual * 100) / space.coletor.litrosTotal
+  );
 
   res.render("pages/oilContainer", {
     user: req.session.user,
     space: space,
-    percent: percent
+    percent: percent,
   });
 });
 app.post("/oil-container", urlencodedParser, async function (req, res) {
   const { id, quantity } = req.body;
   const url = "/oil-container?id=" + id;
   Space.setLiters(id, quantity);
-  res.redirect(url)
+  res.redirect(url);
 });
 app.get("/participate", requireAuth, async function (req, res) {
   const allSpaces = await Space.fecth();
@@ -177,6 +190,19 @@ app.post("/participate", urlencodedParser, function (req, res) {
 
   spaceUser.add();
   res.redirect("/spaces");
+});
+
+app.post("/manage-user", urlencodedParser, function (req, res) {
+  const type = req.query.type;
+  const idUserReq = req.query.idUserReq;
+  const spaceId = req.query.idSpace;
+  SpaceUser.edit(spaceId, idUserReq, type);
+});
+
+app.post("/drain-out", urlencodedParser, function (req, res) {
+  const spaceId = req.query.id;
+
+  Space.drainOut(spaceId);
 });
 
 // load public folder
