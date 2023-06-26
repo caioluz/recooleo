@@ -31,7 +31,8 @@ Para executar o aplicativo Recoóleo localmente, siga as instruções abaixo:
 2. Navegue até o diretório do projeto: `cd recooleo`
 3. Instale as dependências necessárias: `npm install`
 4. Inicie o servidor local: `npm start`
-5. Acesse o aplicativo no navegador em `http://localhost:3000`
+5. Inicie o servidor do json-server: `npm run server`
+6. Acesse o aplicativo no navegador em `http://localhost:8080`
 
 Certifique-se de ter o Node.js e o npm instalados em sua máquina antes de prosseguir com as etapas acima.
 
