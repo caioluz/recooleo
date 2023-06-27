@@ -10,7 +10,7 @@ O Recoóleo oferece as seguintes funcionalidades:
 2. **Gerenciamento de Dados Pessoais**: Os usuários têm a capacidade de atualizar suas informações pessoais e alterar a senha de acesso.
 3. **Espaços para Coleta de Óleo**: Os proprietários podem criar e gerenciar espaços destinados à coleta de óleo, fornecendo detalhes como localização e capacidade de armazenamento.
 4. **Solicitação de Participação**: Os usuários interessados em fazer parte de um espaço de coleta podem solicitar a participação, aguardando a aprovação do proprietário.
-5. **Comunicação entre Proprietários e Coletores**: Os proprietários podem entrar em contato com os coletores para combinar a retirada do óleo já coletado.
+5. **Comunicação entre Proprietários e Coletores**: Os proprietários podem entrar em contato com os coletores, através de um link direto para o WhatsApp, quando o contador atinge a capacidade máxima. Assim, podem combinar a retirada do óleo já coletado.
 6. **Reinício do Contador de Óleo**: Os proprietários têm a opção de reiniciar o contador de óleo armazenado em seus espaços, indicando que o óleo já foi retirado.
 7. **Remoção de Espaços**: Os proprietários podem remover os espaços que criaram, caso necessário.
 
@@ -36,14 +36,16 @@ Para executar o aplicativo Recoóleo localmente, siga as instruções abaixo:
 
 Certifique-se de ter o Node.js e o npm instalados em sua máquina antes de prosseguir com as etapas acima.
 
+## Aplicação
+
+O projeto já encontra-se hospedado online e pode ser acessado ao clicar: [Recoóleo]().
+
 ## Contribuição
 
 Se você deseja contribuir com o aplicativo Recoóleo, siga as etapas abaixo:
 
 1. Faça um fork deste repositório.
-2. Crie uma nova branch
-
- com a sua contribuição: `git checkout -b minha-contribuicao`
+2. Crie uma nova branch com a sua contribuição: `git checkout -b minha-contribuicao`
 3. Faça as alterações necessárias e commit: `git commit -m "Minha contribuição"`
 4. Faça push para o repositório remoto: `git push origin minha-contribuicao`
 5. Abra um Pull Request neste repositório.
@@ -54,4 +56,4 @@ Este projeto está licenciado sob a [MIT License](LICENSE.md).
 
 ## Contato
 
-Se você tiver alguma dúvida ou sugestão em relação a este projeto, entre em contato conosco pelo email: [contato@exemplo.com](mailto:contato@exemplo.com). Agradecemos seu interesse!
+Se você tiver alguma dúvida ou sugestão em relação a este projeto, entre em contato conosco pelo email: [recooleo@gmail.com](mailto:recooleo@gmail.com). Agradecemos seu interesse!
