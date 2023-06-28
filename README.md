@@ -56,4 +56,4 @@ Este projeto está licenciado sob a [MIT License](LICENSE.md).
 
 ## Contato
 
-Se você tiver alguma dúvida ou sugestão em relação a este projeto, entre em contato conosco pelo email: [recooleo@gmail.com](mailto:recooleo@gmail.com). Agradecemos seu interesse!
+Se você tiver alguma dúvida ou sugestão em relação a este projeto, entre em contato conosco pelo email: [recooleo@gmail.com](mailto:recooleo@gmail.com). Agradecemos seu interesse.
